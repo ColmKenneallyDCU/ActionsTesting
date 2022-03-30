@@ -27,7 +27,9 @@ jobs:
       - name: Build war file
         run: |
           cd src/main/webapp/
+          ls
           jar -cvf bankofdcu.war *
+          ls
           mv bankofdcu.war warfiles/
 
       # Runs a set of commands using the runners shell
