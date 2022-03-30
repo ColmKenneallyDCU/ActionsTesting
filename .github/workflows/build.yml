@@ -30,7 +30,7 @@ jobs:
           ls
           jar -cvf bankofdcu.war *
           ls
-          mov bankofdcu.war /ActionsTesting
+          cp bankofdcu.war /../..
 
       - name: Commit files
         id: commit
