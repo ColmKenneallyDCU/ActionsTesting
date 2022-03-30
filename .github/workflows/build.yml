@@ -28,7 +28,7 @@ jobs:
         run: |
           cd src/main/webapp/
           jar -cvf bankofdcu.war *
-          mv bankofdcu.war warfiles
+          mv bankofdcu.war warfiles/
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
