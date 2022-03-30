@@ -36,8 +36,9 @@ jobs:
         run: |
               git config --local user.email "colmkenneally3@mail.dcu.ie"
               git config --local user.name "ColmKenneallyDCU"
-              git commit -m "Add changes" -a
               git add --all
+              git commit -m "Add changes" -a
+              
               
       - name: Push changes
         uses: ad-m/github-push-action@master
