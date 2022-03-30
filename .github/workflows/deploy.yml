@@ -23,7 +23,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: echo Hello, world!
+        run: cd src/main/webapp
 
       - name: copy file via ssh key
         uses: appleboy/scp-action@master
@@ -31,7 +31,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
-          source: "src/main/webapp/bankofdcu.war"
+          source: "bankofdcu.war"
           target: "/home/ec2-user/apache-tomcat-9.0.39/webapps"
 
       # Runs a set of commands using the runners shell
