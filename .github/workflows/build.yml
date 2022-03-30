@@ -31,6 +31,12 @@ jobs:
           jar -cvf bankofdcu.war *
           ls
 
+      - name: Commit files
+        id: commit
+        run: |
+              git commit -m "Add changes" -a
+              git add --all
+              
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
