@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: Deploy
 
 # Controls when the workflow will run
 on:
@@ -31,7 +31,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
-          source: "/Users/colmkenneally/ECE4/web/ActionsTesting/src/main/webapp/bankofdcu.war"
+          source: "src/main/webapp/bankofdcu.war"
           target: "/home/ec2-user/apache-tomcat-9.0.39/webapps"
 
       # Runs a set of commands using the runners shell
