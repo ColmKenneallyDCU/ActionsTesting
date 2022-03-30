@@ -30,7 +30,6 @@ jobs:
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
-          port: ${{ secrets.PORT }}
           key: ${{ secrets.KEY }}
           source: "/Users/colmkenneally/ECE4/web/ActionsTesting/src/main/webapp/bankofdcu.war"
           target: "/home/ec2-user/apache-tomcat-9.0.39/webapps"
