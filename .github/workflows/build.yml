@@ -28,9 +28,9 @@ jobs:
         run: |
           cd src/main/webapp/
           ls
-          jar -cvf bankofdcu.war *
+          jar -cvf ROOT.war *
           ls
-          sudo mv bankofdcu.war ../../../
+          sudo mv ROOT.war ../../../
 
       - name: Commit files
         id: commit
