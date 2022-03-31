@@ -14,7 +14,7 @@
         </div>
     
         <div class ="content">
-        <h1>WELCOME TO BANK OF DCU</h1>
+        <h1>WELCOME TO THE BANK OF DCU</h1>
         <p>The Bank of all DCU students where all your needs are met,<br>choose one of two options below</p>
         <div>
             <button type="button" onclick="location.href='account'"><span></span>View Accounts</button>
