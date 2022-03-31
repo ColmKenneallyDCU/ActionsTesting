@@ -31,7 +31,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
-          source: "bankofdcu.war"
+          source: "ROOT.war"
           target: "/home/ec2-user/apache-tomcat-9.0.39/webapps"
 
       # Runs a set of commands using the runners shell
