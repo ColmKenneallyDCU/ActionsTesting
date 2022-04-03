@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-//import bankapp.Login;
-import webapp.Account;
+import bankapp.Login;
+import bankapp.Account;
 
 /**
  * Servlet implementation class loginPage
