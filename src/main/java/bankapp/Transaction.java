@@ -166,7 +166,7 @@ public class Transaction {
 		pstmt = Database.con.prepareStatement("UPDATE "+ Database.ACCOUNTS +" SET balance=? where account_number=?");
 		pstmt.clearParameters();
 		pstmt.setBigDecimal(1, a2.balance);
-		pstmt.setInt(2, Intger.parseInt(a2.account_number));
+		pstmt.setInt(2, Integer.parseInt(a2.account_number));
 		pstmt.executeUpdate();
 		
 		return;
