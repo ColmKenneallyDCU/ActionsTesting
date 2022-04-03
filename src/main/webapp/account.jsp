@@ -69,15 +69,19 @@
 					<th>Date</th>
 					<th>Time</th>
 					<th style="width: 300px;">Description</th>
-					<th>Credit</th>
-				
-				<% for(Transaction t: listtrans){ %>
-					<th><%= new SimpleDateFormat("dd.MM.yyyy").format(t.date_issued) %></th>
-					<th><%= new SimpleDateFormat("HH:mm:ss").format(t.date_issued) %></th>
-					<th style="width: 300px;"><%= t.description %></th>
-					<th><%= t.amount.toString() %></th>
-				<%} %>
+					<th>Amount</th>
+					<th>Type</th>
 				</tr>
+				<% for(Transaction t: listtrans){ %>
+					<tr>
+						<th><%= new SimpleDateFormat("dd.MM.yyyy").format(t.date_issued) %></th>
+						<th><%= new SimpleDateFormat("HH:mm:ss").format(t.date_issued) %></th>
+						<th style="width: 300px;"><%= t.description %></th>
+						<th><%= t.amount.toString() %></th>
+						<th><%= t.transaction_type.toString() %></th>
+					</tr>
+				<%} %>
+				
 			</thead>
 			</table>
 		</div>
@@ -90,8 +94,8 @@
 	<div class="logininfo">
 		<div class="container">
 			<span><b>Last Login </b></span><br>
-			<img src="images/desktop.png" class="loginlogo">
-			<span id="logintime">Time: <%=new SimpleDateFormat("HH:mm:ss").format(l.last_online) %></span><br>  <!--Hardcoded values for demonstration. Should be a real-time value-->
+			<img src="images/desktop.png" class="loginlogo">			
+			<span id="logintime">Time: <%= new SimpleDateFormat("HH:mm:ss").format(l.last_online) %></span><br>  <!--Hardcoded values for demonstration. Should be a real-time value-->
 			<span id="logindevice">Date: <%=new SimpleDateFormat("d MMM yyyy").format(l.last_online) %></span><br>
 		</div>
 	</div>
@@ -102,17 +106,10 @@
 		<button type="button" id="btn3" class="btn">Manage Payee</button>
 	</div>
 	
-	<div class="footer-basic">
-        <footer>
-            <ul class="list-inline">
-                <li class="list-inline-item"><a href="HomePage.html">Home</a></li>
-                <li class="list-inline-item"><a href="#">Services</a></li>
-                <li class="list-inline-item"><a href="#">About</a></li>
-                <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
-            </ul>
-            <p class="copyright">Bank of DCU Â© 2022</p>
-        </footer>
-    </div>
+	<!-- Footer -->
+    <jsp:include page="components/footer.jsp"/>  
+	
+	
 </body>
 </html>
 		

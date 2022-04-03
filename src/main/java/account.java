@@ -42,7 +42,7 @@ public class account extends HttpServlet {
 			if(l != null) {
 				request.setAttribute("login", l);
 				request.setAttribute("accounts", Account.findAccounts(l.customer_ID));
-				request.setAttribute("transactions", Transaction.findAccounts(l.customer_ID));
+				request.setAttribute("transactions", Transaction.findLastXTransactions(l.user_ID,5));
 				request.getRequestDispatcher("account.jsp").forward(request, response);
 			}
 			else {

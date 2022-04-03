@@ -5,23 +5,20 @@
 </head>    
 <body>
     
-    <div class="banner">
-        <div class="navbar">
-            <img src="images/sitelogo.png" class="logo"><!--Need a transparent photo-->
-            <ul>
-                <li><a href="loginpage">Login</a> </li> <!--Will make a drop down section here to contain  button-->
-            </ul>    
-        </div>
+    <!-- Front Banner -->
+    <jsp:include page="components/bannerfrontpage.jsp"/>  
     
-        <div class ="content">
-        <h1>WELCOME TO THE BANK OF DCU</h1>
+         
+    </div>
+    <div class ="content">
+        <h1>WELCOME TO BANK OF DCU</h1>
         <p>The Bank of all DCU students where all your needs are met,<br>choose one of two options below</p>
         <div>
             <button type="button" onclick="location.href='account'"><span></span>View Accounts</button>
             <button type="button" onclick="location.href='transfers'"><span></span>Transfer Money</button>
         </div>
-        </div> 
-    </div>
+        </div>
+    
     <section class="services">
         <div class="ServiceTitle">
         <h1>Services We Provide</h1>

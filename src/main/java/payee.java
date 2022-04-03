@@ -1,11 +1,18 @@
 
 
 import java.io.IOException;
+import java.sql.SQLException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import bankapp.Account;
+import bankapp.Login;
+import bankapp.Transaction;
 
 /**
  * Servlet implementation class payee
@@ -27,7 +34,22 @@ public class payee extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("payee.jsp").forward(request, response);
+
+		Cookie cookies[] = request.getCookies();
+		
+		try {
+			Login l = Login.getLoginFromCookies(cookies);
+			if(l != null) {
+				request.getRequestDispatcher("payee.jsp").forward(request, response);
+			}
+			else {
+				response.sendError(HttpServletResponse.SC_FORBIDDEN, "User Is not Logged in.");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 	/**

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import bankapp.Login;
-//import webapp.Account;
+import webapp.Account;
 
 /**
  * Servlet implementation class loginPage
@@ -74,6 +74,8 @@ public class loginpage extends HttpServlet {
 			Login l = Login.findLogin(email, password);
 			
 			if(l != null){
+				l.setLoginTime();
+				
 				Cookie user = new Cookie("email", l.email);
 				Cookie pass = new Cookie("password", l.user_password);
 				user.setMaxAge(60*60);
@@ -81,8 +83,6 @@ public class loginpage extends HttpServlet {
 				
 				response.addCookie(user);
 				response.addCookie(pass);
-				
-				l.setLoginTime();
 
 				response.sendRedirect("account");
 			}

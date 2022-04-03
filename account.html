@@ -1,0 +1,133 @@
+<html>
+<head>
+<title>My Account</title>
+<link rel="stylesheet" href="css/account.css">
+</head>    
+<body>
+    <div class="banner">
+        <div class="navbar">
+            <img src="images/sitelogo.png" class="logo"><!--Need a transparent photo-->
+			
+            <ul>
+                <li><a href="#">Accounts</a> </li>
+                <li><a href="#">Cards</a> </li>
+                <li><a href="#">Payees</a> </li>
+                <li><a href="#">Additional Services</a> </li>
+                <li><a href="#">Profile</a> </li> <!--Will make a drop down section here to contain Log out button-->
+            </ul>    
+        </div>
+    </div>
+<div class="row">	
+	<div class="column">
+	<div class="account">
+		<div class="myaccount">
+			<h2> My Accounts <h2>
+		</div>
+		<div class="acctype1">
+			<span id="account1"><b>Savings Account</b></span>
+			<span id="balance1" style="float: right;"><b> $2000 </b></span> 
+			
+			<div class="accountinfo1">
+				<span id="accountinfo1">IBAN: </span></br>
+				<span id="accountinfo1">Account Number: </span>
+			</div>
+		</div>
+		<div class="acctype2">
+			<span id="account2"><b>Current Account</b></span>
+			<span id="balance2" style="float: right;"><b> $5000 </b></span>
+			<div class="accountinfo2">
+				<span id="accountinfo2">IBAN: </span></br>
+				<span id="accountinfo2">Account Number: </span>
+			</div>
+		</div>
+	</div>
+	</div>
+	<div class="column">
+		<div class="transcations">
+		<div class="Last5entry">
+			<h3> Last 5 Transcations <h3>
+		</div>
+		<!--Added some hardcoded values in table for understanding. Table values should be fetched dynamically from database-->
+		<div class="tablecontainer" id="tablebox">
+			<table id="myTable" class="table-bordered">
+			<thead>
+			<tr>
+			<th>Date</th>
+			<th>Time</th>
+			<th style="width: 300px;">Description</th>
+			<th>Debit</th>
+			<th>Credit</th>
+			</tr>
+			<tr>
+			<td>10/03/2022</td>
+			<td>10:02:30</td>
+			<td>From 15975346823 to 147852369</td>
+			<td></td>
+			<td>1000</td>
+			</tr>
+			<tr>
+			<td>08/03/2022</td>
+			<td>18:06:48</td>
+			<td>Gas Bill Payment</td>
+			<td>50</td>
+			<td></td>
+			</tr>
+			<tr>
+			<td>07/03/2022</td>
+			<td>09:09:09</td>
+			<td>EuroSpar Tap and Pay</td>
+			<td>10</td>
+			<td></td>
+			</tr>
+			<tr>
+			<td>06/03/2022</td>
+			<td>20:01:58</td>
+			<td>ATM Cash Withdrawal</td>
+			<td>20</td>
+			<td></td>
+			</tr>
+			<tr>
+			<td>05/03/2022</td>
+			<td>06:05:15</td>
+			<td>Tax Refund</td>
+			<td></td>
+			<td>500</td>
+			</tr>
+			</thead>
+			</table>
+		</div>
+	</div>
+		
+	</div>
+	</div>
+
+	
+	<div class="logininfo">
+		<div class="container">
+			<span><b>Last Login </b></span><br>
+			<img src="images/desktop.png" class="loginlogo">
+			<span id="logintime">Time: 15:08:03</span><br>  <!--Hardcoded values for demonstration. Should be a real-time value-->
+			<span id="logindevice">Date: 24/03/2022</span><br>
+		</div>
+	</div>
+	
+	<div class="Links">
+		<button type="button" id="btn1" class="btn">Send Money</button>
+		<button type="button" id="btn2" class="btn">Bank Statements</button>
+		<button type="button" id="btn3" class="btn">Manage Payee</button>
+	</div>
+	
+	<div class="footer-basic">
+        <footer>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="#">Home</a></li>
+                <li class="list-inline-item"><a href="#">Services</a></li>
+                <li class="list-inline-item"><a href="#">About</a></li>
+                <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+            </ul>
+            <p class="copyright">Bank of DCU © 2022</p>
+        </footer>
+    </div>
+</body>
+</html>
+		

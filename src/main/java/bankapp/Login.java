@@ -15,8 +15,8 @@ public class Login {
 		N
 	};
 	
-	public int customer_ID = 0;
-	public int user_ID = 0;
+	public Integer customer_ID = null;
+	public Integer user_ID = null;
 	public String email = "";
 	public String user_password = "";
 	public Timestamp last_online = null;
