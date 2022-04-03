@@ -33,10 +33,10 @@ public class Transaction {
 		paymentout,
 	}
 	
-	public String transaction_id = "";
-	public String account_number = "";
-	public String user_ID = "";
-	public String payee_id = "";
+	public Integer transaction_id = null;
+	public Integer account_number = null;
+	public Integer user_ID = null;
+	public Integer payee_id = null;
 	public String payee_account = "";
 	public String payee_iban = "";
 	public Timestamp date_issued = null;
