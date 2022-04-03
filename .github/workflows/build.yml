@@ -23,14 +23,37 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
+      - name: Setup Maven Action
+        uses: s4u/setup-maven-action@v1.2.1
+        with:
+          java-version: 8
+
+      - name: Build with Maven
+        run:  mvn clean install
+        
+      - name: Commit files
+        id: commit1
+        run: |
+              git config --local user.email "colmkenneally3@mail.dcu.ie"
+              git config --local user.name "ColmKenneallyDCU"
+              git add --all
+              git commit -m "Add changes" -a
+      
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+           github_token: ${{ secrets.GITHUB_TOKEN }}
+              
+              
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+           github_token: ${{ secrets.GITHUB_TOKEN }}        
       # Runs a single command using the runners shell
       - name: Build war file
         run: |
-          cd src/main/webapp/
-          ls
-          jar -cvf ROOT.war *
-          ls
-          sudo mv ROOT.war ../../../
+          java -version
+          sudo mv target/Assignment3-1.0-SNAPSHOT.war ROOT.war
 
       - name: Commit files
         id: commit
