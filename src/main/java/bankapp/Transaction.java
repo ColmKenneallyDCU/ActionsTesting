@@ -131,9 +131,9 @@ public class Transaction {
 		Timestamp datenow = new Timestamp(new Date().getTime());
 		PreparedStatement pstmt = Database.con.prepareStatement("INSERT INTO " + Database.TRANSACTIONS + "(account_number,user_ID,payee_account,date_issued,amount,account_type,transaction_type,`description`) VALUES (?,?,?,?,?,?,?,?)");
 		pstmt.clearParameters();
-		pstmt.setInt(1, a1.account_number);
+		pstmt.setInt(1, Integer.parseInt(a1.account_number));
 		pstmt.setInt(2, a1.user_ID);
-		pstmt.setInt(3, a2.account_number);
+		pstmt.setInt(3, Integer.parseInt(a2.account_number));
 		pstmt.setTimestamp(4, datenow);
 		pstmt.setBigDecimal(5, amount);
 		pstmt.setString(6, a1.account_type.toString());
@@ -143,9 +143,9 @@ public class Transaction {
 
 		pstmt = Database.con.prepareStatement("INSERT INTO " + Database.TRANSACTIONS + "(account_number,user_ID,payee_account,date_issued,amount,account_type,transaction_type,`description`) VALUES (?,?,?,?,?,?,?,?)");
 		pstmt.clearParameters();
-		pstmt.setInt(1, a2.account_number);
+		pstmt.setInt(1, Integer.parseInt(a2.account_number));
 		pstmt.setInt(2, a2.user_ID);
-		pstmt.setInt(3, a1.account_number);
+		pstmt.setInt(3, Integer.parseInt(a1.account_number));
 		pstmt.setTimestamp(4, datenow);
 		pstmt.setBigDecimal(5, amount);
 		pstmt.setString(6, a2.account_type.toString());
@@ -160,13 +160,13 @@ public class Transaction {
 		pstmt = Database.con.prepareStatement("UPDATE "+ Database.ACCOUNTS +" SET balance=? where account_number=?");
 		pstmt.clearParameters();
 		pstmt.setBigDecimal(1, a1.balance);
-		pstmt.setInt(2, a1.account_number);
+		pstmt.setInt(2, Integer.parseInt(a1.account_number));
 		pstmt.executeUpdate();
 
 		pstmt = Database.con.prepareStatement("UPDATE "+ Database.ACCOUNTS +" SET balance=? where account_number=?");
 		pstmt.clearParameters();
 		pstmt.setBigDecimal(1, a2.balance);
-		pstmt.setInt(2, a2.account_number);
+		pstmt.setInt(2, Intger.parseInt(a2.account_number));
 		pstmt.executeUpdate();
 		
 		return;
