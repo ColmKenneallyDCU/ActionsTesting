@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.example</groupId>
-    <artifactId>Recipeasy</artifactId>
+    <artifactId>bankofdcu</artifactId>
     <version>1.0</version>
-    <name>Assignment3</name>
+    <name>bankofdcu</name>
     <packaging>war</packaging>
 
     <properties>
