@@ -53,7 +53,7 @@ jobs:
       - name: Build war file
         run: |
           java -version
-          sudo mv target/Recipeasy-1.0.war ROOT.war
+          sudo mv target/bankofdcu-1.0.war ROOT.war
 
       - name: Commit files
         id: commit
