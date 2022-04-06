@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import bankapp.Account;
 import bankapp.Login;
+import bankapp.Payee;
 import bankapp.Transaction;
 
 /**
@@ -57,7 +58,34 @@ public class payee extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+		String payeename = request.getParameter("payee");
+		String iban = request.getParameter("Iban");
+		String bankname = request.getParameter("bankname");
+		
+		Cookie cookies[] = request.getCookies();
+		try {
+			Login l = Login.getLoginFromCookies(cookies);
+			if(l != null) {
+				for(Payee p : Payee.getPayees(l.email)) {
+					if(p.payee_iban.equals(iban)){
+						response.sendError(HttpServletResponse.SC_FORBIDDEN, "Payee Already Exists");
+						return;
+					}
+				}
+				
+				Payee.addPayee(payeename, iban, bankname, l);
+				response.sendRedirect("payee");
+			}
+			else {
+				response.sendError(HttpServletResponse.SC_FORBIDDEN, "User Is not Logged in.");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
 	}
 
 }

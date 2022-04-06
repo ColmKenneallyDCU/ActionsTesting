@@ -17,7 +17,7 @@ public class Database {
 	
 	public static String USERNAME = "admin";
 	public static String PASSWORD = "EE417Password";
-	public static String URL = "jdbc:mysql://dbbankofdcu.cngyo8pqaq6c.eu-west-1.rds.amazonaws.com:3306/"+DATABASE_NAME;
+	public static String URL = "jdbc:mysql://dbbankofdcu.cngyo8pqaq6c.eu-west-1.rds.amazonaws.com:3306/"+DATABASE_NAME+"?autoReconnect=true";
 	
 	public static String CUSTOMERS = DATABASE_NAME + ".customers";
 	public static String LOGINDB = DATABASE_NAME + ".logindb";

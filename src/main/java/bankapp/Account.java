@@ -53,11 +53,11 @@ public class Account {
 		return l;
 	}
 	
-	public static Account getAccount(int account_number) throws SQLException {
+	public static Account getAccount(String account_number) throws SQLException {
 		Account ac = null;
 		
 		Database.connect();
-		ResultSet rs = Database.con.createStatement().executeQuery("SELECT * FROM " + Database.ACCOUNTS + " where account_number='"+String.valueOf(account_number)+"'");
+		ResultSet rs = Database.con.createStatement().executeQuery("SELECT * FROM " + Database.ACCOUNTS + " where account_number='"+account_number+"'");
 		
 		while(rs.next()) {
 			ac = new Account();

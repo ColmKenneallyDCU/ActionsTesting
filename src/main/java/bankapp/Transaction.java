@@ -34,7 +34,7 @@ public class Transaction {
 	}
 	
 	public Integer transaction_id = null;
-	public Integer account_number = null;
+	public String account_number = null;
 	public Integer user_ID = null;
 	public Integer payee_id = null;
 	public String payee_account = "";
@@ -59,7 +59,7 @@ public class Transaction {
 		while(rs.next()) {
 			Transaction t = new Transaction();
 			t.transaction_id = rs.getInt("transaction_id");
-			t.account_number = rs.getInt("account_number");
+			t.account_number = rs.getString("account_number");
 			t.user_ID = rs.getInt("user_ID");
 			t.payee_id = rs.getInt("payee_id");
 			t.payee_account = rs.getString("payee_account");
@@ -84,7 +84,7 @@ public class Transaction {
 		while(rs.next()) {
 			Transaction t = new Transaction();
 			t.transaction_id = rs.getInt("transaction_id");
-			t.account_number = rs.getInt("account_number");
+			t.account_number = rs.getString("account_number");
 			t.user_ID = rs.getInt("user_ID");
 			t.payee_id = rs.getInt("payee_id");
 			t.payee_account = rs.getString("payee_account");
@@ -108,7 +108,7 @@ public class Transaction {
 		while(rs.next()) {
 			Transaction t = new Transaction();
 			t.transaction_id = rs.getInt("transaction_id");
-			t.account_number = rs.getInt("account_number");
+			t.account_number = rs.getString("account_number");
 			t.user_ID = rs.getInt("user_ID");
 			t.payee_id = rs.getInt("payee_id");
 			t.payee_account = rs.getString("payee_account");
@@ -125,32 +125,35 @@ public class Transaction {
 		return l;
 	}
 	
-	public static void createLocalTransaction(BigDecimal amount, Account a1, Account a2) throws SQLException{
+	public static void createLocalBankTransaction(BigDecimal amount, Account a1, Account a2, String frommessage, String tomessage) throws SQLException{
+		System.out.println("Account A1:" + a1.account_number);
+		System.out.println("Account A2:" + a2.account_number);
+		
 		Database.connect();
 
 		Timestamp datenow = new Timestamp(new Date().getTime());
 		PreparedStatement pstmt = Database.con.prepareStatement("INSERT INTO " + Database.TRANSACTIONS + "(account_number,user_ID,payee_account,date_issued,amount,account_type,transaction_type,`description`) VALUES (?,?,?,?,?,?,?,?)");
 		pstmt.clearParameters();
-		pstmt.setInt(1, Integer.parseInt(a1.account_number));
+		pstmt.setString(1, a1.account_number);
 		pstmt.setInt(2, a1.user_ID);
-		pstmt.setInt(3, Integer.parseInt(a2.account_number));
+		pstmt.setString(3, a2.account_number);
 		pstmt.setTimestamp(4, datenow);
 		pstmt.setBigDecimal(5, amount);
 		pstmt.setString(6, a1.account_type.toString());
 		pstmt.setString(7, Transaction.TranType.withdrawal.toString());
-		pstmt.setString(8, "Local Account Transfer");
+		pstmt.setString(8, frommessage);
 		pstmt.executeUpdate();
 
 		pstmt = Database.con.prepareStatement("INSERT INTO " + Database.TRANSACTIONS + "(account_number,user_ID,payee_account,date_issued,amount,account_type,transaction_type,`description`) VALUES (?,?,?,?,?,?,?,?)");
 		pstmt.clearParameters();
-		pstmt.setInt(1, Integer.parseInt(a2.account_number));
+		pstmt.setString(1, a2.account_number);
 		pstmt.setInt(2, a2.user_ID);
-		pstmt.setInt(3, Integer.parseInt(a1.account_number));
+		pstmt.setString(3, a1.account_number);
 		pstmt.setTimestamp(4, datenow);
 		pstmt.setBigDecimal(5, amount);
 		pstmt.setString(6, a2.account_type.toString());
 		pstmt.setString(7, Transaction.TranType.deposit.toString());
-		pstmt.setString(8, "Local Account Transfer");
+		pstmt.setString(8, tomessage);
 		pstmt.executeUpdate();
 		
 
@@ -160,15 +163,41 @@ public class Transaction {
 		pstmt = Database.con.prepareStatement("UPDATE "+ Database.ACCOUNTS +" SET balance=? where account_number=?");
 		pstmt.clearParameters();
 		pstmt.setBigDecimal(1, a1.balance);
-		pstmt.setInt(2, Integer.parseInt(a1.account_number));
+		pstmt.setString(2, a1.account_number);
 		pstmt.executeUpdate();
 
 		pstmt = Database.con.prepareStatement("UPDATE "+ Database.ACCOUNTS +" SET balance=? where account_number=?");
 		pstmt.clearParameters();
 		pstmt.setBigDecimal(1, a2.balance);
-		pstmt.setInt(2, Integer.parseInt(a2.account_number));
+		pstmt.setString(2, a2.account_number);
 		pstmt.executeUpdate();
 		
+		return;
+	}
+
+
+	public static void createInternationalBankTransaction(BigDecimal amount, Account a1, Account a2, String frommessage) throws SQLException {
+		Database.connect();
+		Timestamp datenow = new Timestamp(new Date().getTime());
+		PreparedStatement pstmt = Database.con.prepareStatement("INSERT INTO " + Database.TRANSACTIONS + "(account_number,user_ID,payee_account,date_issued,amount,account_type,transaction_type,`description`) VALUES (?,?,?,?,?,?,?,?)");
+		pstmt.clearParameters();
+		pstmt.setString(1, a1.account_number);
+		pstmt.setInt(2, a1.user_ID);
+		pstmt.setString(3, a2.account_number);
+		pstmt.setTimestamp(4, datenow);
+		pstmt.setBigDecimal(5, amount);
+		pstmt.setString(6, a1.account_type.toString());
+		pstmt.setString(7, Transaction.TranType.withdrawal.toString());
+		pstmt.setString(8, frommessage);
+		pstmt.executeUpdate();
+
+		a1.balance = a1.balance.subtract(amount);
+		
+		pstmt = Database.con.prepareStatement("UPDATE "+ Database.ACCOUNTS +" SET balance=? where account_number=?");
+		pstmt.clearParameters();
+		pstmt.setBigDecimal(1, a1.balance);
+		pstmt.setString(2, a1.account_number);
+		pstmt.executeUpdate();
 		return;
 	}
 	

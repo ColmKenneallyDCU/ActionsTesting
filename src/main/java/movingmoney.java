@@ -78,14 +78,14 @@ public class movingmoney extends HttpServlet {
 			
 			System.out.println(money.toString());
 			
-			Account f = Account.getAccount(Integer.valueOf(from));
-			Account t = Account.getAccount(Integer.valueOf(to));
+			Account f = Account.getAccount(from);
+			Account t = Account.getAccount(to);
 					
 			
 			if(f != null && t != null) {
 				if(f.balance.compareTo(money) > 0) {
 					//Balance ok
-					Transaction.createLocalTransaction(money, f, t);
+					Transaction.createLocalBankTransaction(money, f, t, "Local Account Transfer", "Local Account Transfer");
 					response.sendRedirect("movingmoney");
 					
 				}

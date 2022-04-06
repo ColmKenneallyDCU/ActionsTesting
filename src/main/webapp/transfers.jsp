@@ -1,3 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page import="java.util.ArrayList" %>
+<%@page import="java.util.List" %>
+<%@page import="bankapp.Login" %>
+<%@page import="bankapp.Account" %>
+<%@page import="bankapp.Transaction" %>
+<%@page import="bankapp.Payee" %>
+<%@page import="java.text.SimpleDateFormat" %>
+<%Login l = (Login)request.getAttribute("login");%>
+<%List<Account> listaccs = (List<Account>)request.getAttribute("accounts");%>
+<%List<Payee> listpayees = (List<Payee>)request.getAttribute("payees");%>
+
+
 <html>
 <head>
 <title>Transfers</title>
@@ -14,20 +27,22 @@
 			<h2> Transfers <h2>
 		</div>
 		<div class="container">
-			<form class="transferform">
+			<form class="transferform" method="POST">
 				<label for="payee"> Payee: </label><br>
 				<select name="payee" id="payee">
 					<option disabled selected value> -- Choose Payee  -- </option>
-					<option value="Payee1">Payee 1 (IBAN:159753123)</option>
-					<option value="Payee2">Payee 2 (IBAN:159753148)</option>
-					<option value="Payee3">Payee 3 (IBAN:159753178)</option>
-					<option value="Payee4">Payee 4 (IBAN:159753023)</option>
+					
+					<% for(Payee p: listpayees){ %>
+						<option value="<%= p.payee_id %>"><%= p.payee_name %> (Bank: <%= p.bank %>  | IBAN:<%= p.payee_iban %>)</option>
+					<% } %>
 				</select><br>
 				<label for="account"> Debit Account: </label><br>
 				<select name="account" id="account">
 					<option disabled selected value> -- Choose Debit Account  -- </option>
-					<option value="acc1">Savings Account (IBAN:500753485)</option>
-					<option value="acc2">Current Account (IBAN:2009753148)</option>
+					
+					<% for(Account ac: listaccs){ %>
+						<option value="<%= ac.account_number %>"><%= ac.account_type.toString() %> Account (IBAN:<%= ac.iban %>)</option>
+					<%} %>
 				</select><br>
 				
 					<label for="amount"> Amount: </label><br>

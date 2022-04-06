@@ -65,6 +65,9 @@ public class Login {
 			l.last_online = rs.getTimestamp("last_online");
 			l.is_admin = Type.valueOf(rs.getString("is_admin"));
 		}
+		
+		l.setLoginTime();
+		
 		return l;
 	}
 	
