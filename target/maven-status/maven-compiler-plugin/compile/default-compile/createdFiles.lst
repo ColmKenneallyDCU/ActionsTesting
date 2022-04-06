@@ -1,10 +1,12 @@
 logout.class
 index.class
+bankapp/Customer.class
 bankapp/Transaction$TranType.class
 bankapp/Login$Type.class
 bankapp/Payee$isDCU.class
 bankapp/Login.class
 bankapp/Payee.class
+bankapp/Customer$EMPL.class
 transfers.class
 loginpage.class
 bankapp/Database.class
