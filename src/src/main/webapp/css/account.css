@@ -1,0 +1,274 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.banner{
+	background-color: DarkSlateBlue;
+    width: 100%;
+}
+
+.navbar {
+    width: 90%;
+    margin: auto;
+    padding: 35px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo{
+    width: 75px;
+    cursor:pointer;
+}
+
+.navbar ul li{
+    list-style: none;
+    display: inline-block;
+    margin: 0 20px;
+    position: relative;
+}
+
+.navbar ul li a{
+    text-decoration: none;
+    color:#fff;
+    text-transform: uppercase;
+}
+
+.navbar ul li::after{
+    content:'';
+    height: 3px;
+    width: 0%;
+    background: #dc2f55;
+    position:absolute;
+    left:0;
+    bottom: -10px;
+    transition: 0.5s;
+}
+
+.navbar ul li:hover::after{
+    width: 100%;
+}
+.column {
+  float: left;
+  width: 50%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.account {
+	margin: 50px 20px;
+	border-radius: 5px;
+	border: 1px solid DarkSlateBlue;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	transition: 0.3s;
+	border-radius: 5px;
+}
+
+.myaccount {
+	width: width: 97.4%;
+	background-color: DarkSlateBlue;
+	padding: 10px;
+	border-radius: 5px;
+}
+
+.Last5entry {
+	width: 97.4%;
+	background-color: DarkSlateBlue;
+	padding: 10px;
+	border-radius: 5px;
+}
+
+h2 {
+	color: white;
+	font-size: 20px;
+	text-align: center;
+}
+
+.acctype1 {
+	margin: 10px 10px 10px 10px;
+	width: 92%;
+	padding: 20px 20px;
+	border-radius: 5px;
+	border: 1px solid DarkSlateBlue;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	transition: 0.3s;
+	border-radius: 5px;	
+}
+.acctype2 {
+	margin: 10px 10px 10px 10px;
+	width: 92%;
+	padding: 20px 20px;
+	border-radius: 5px;
+	border: 1px solid DarkSlateBlue;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	transition: 0.3s;
+	border-radius: 5px;	
+}
+
+.accountinfo1,.accountinfo2 {
+	padding: 10px 20px;
+}
+
+
+
+
+.transcations {
+	margin: 50px 20px;
+	border-radius: 5px;
+	border: 1px solid DarkSlateBlue;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	transition: 0.3s;
+	border-radius: 5px;
+}
+
+h3 {
+	color: white;
+	font-size: 20px;
+	text-align: center;
+}
+
+.tablecontainer {
+	margin: 20px 40px;
+}
+
+
+.table-bordered {
+  
+  border-style: solid;
+  border-radius: 5px;
+  border-collapse: collapse;
+}
+
+.table-bordered th,
+.table-bordered td {
+  min-width: 80px;
+  padding: 10px;
+  line-height: 16px;
+  text-align: center;
+  vertical-align: top;
+  border: 1px solid black;
+}
+
+
+.table-bordered th {
+  background-color: white;
+  color: black;
+  text-align: center;
+}
+
+.logininfo {
+	margin: 20px 150px;
+	width: 25%;
+	border-radius: 5px;
+	border: 1px solid DarkSlateBlue;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	transition: 0.3s;
+	border-radius: 5px;
+	background-color: LightGrey;
+}
+
+.container {
+	padding: 20px 20px;
+}
+
+.loginlogo {
+	float: right;
+	width: 60px;
+	height: 40px;
+}
+
+.Links {
+	width: 100%;
+	margin: auto;
+	padding: 50px 30px;
+}
+
+button {
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 20px 20px;
+  opacity: 0.9;
+  width: 25%;
+  border-radius: 5px;
+  margin: 20px 50px;
+}
+
+.btn{
+	background-color: DarkSlateBlue;
+	padding: 20px 20px;
+	
+}
+
+.btn:hover {
+	opacity: 0.7;
+}
+
+.footer-basic {
+  padding:40px 0;
+  background-color:LightGrey;
+  color:#4b4c4d;
+}
+
+.footer-basic ul {
+  padding:0;
+  list-style:none;
+  text-align:center;
+  font-size:18px;
+  line-height:1.6;
+  margin-bottom:0;
+}
+
+.footer-basic li {
+  padding:0 10px;
+}
+
+.footer-basic ul a {
+  color:inherit;
+  text-decoration:none;
+  opacity:0.8;
+}
+
+.footer-basic ul a:hover {
+  opacity:1;
+}
+
+.footer-basic {
+  text-align:center;
+  padding-bottom:25px;
+}
+
+.footer-basic > a {
+  font-size:24px;
+  width:40px;
+  height:40px;
+  line-height:40px;
+  display:inline-block;
+  text-align:center;
+  border-radius:50%;
+  border:1px solid #ccc;
+  margin:0 8px;
+  color:inherit;
+  opacity:0.75;
+}
+
+.footer-basic > a:hover {
+  opacity:0.9;
+}
+
+.footer-basic .copyright {
+  margin-top:15px;
+  text-align:center;
+  font-size:13px;
+  color:#aaa;
+  margin-bottom:0;
+}
+
+
+	
